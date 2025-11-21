@@ -1,25 +1,37 @@
+/* Font Import with Performance Optimization */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* CSS Variables */
 :root {
     --bg-color: #000000;
     --text-color: #f5f5f7;
-    --text-secondary: #86868b;
     --accent-color: #2997ff;
-    --font-main: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --nav-height: 44px;
+    --section-padding: 80px 0;
 }
 
+/* Performance Optimizations */
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    /* Prevent layout shifts */
+    overflow-x: hidden;
+}
+
 body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: var(--font-main);
-    line-height: 1.4;
+    line-height: 1.6;
     overflow-x: hidden;
+    /* Font rendering optimization */
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 /* Typography */
@@ -66,16 +78,21 @@ p.intro {
     -webkit-text-fill-color: transparent;
 }
 
-/* Animations */
+/* Animations - Optimized for Performance */
 .fade-in-up {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+        transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* Performance hint for animations */
+    will-change: opacity, transform;
 }
 
 .fade-in-up.visible {
     opacity: 1;
     transform: translateY(0);
+    /* Remove will-change after animation completes */
+    will-change: auto;
 }
 
 .scale-in {
@@ -223,15 +240,25 @@ p.intro {
 .feature-section {
     padding: 150px 0;
     text-align: center;
+    /* Performance: Skip rendering off-screen content */
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px;
 }
 
-.feature-section h2 {
-    margin-bottom: 20px;
+.bento-section {
+    padding: 100px 0;
+    /* Performance: Skip rendering off-screen content */
+    content-visibility: auto;
+    contain-intrinsic-size: 0 800px;
 }
 
-.feature-section h3 {
-    margin-bottom: 20px;
-    font-size: 40px;
+.camera-section {
+    padding: 150px 0;
+    text-align: center;
+    background: #000;
+    /* Performance: Skip rendering off-screen content */
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px;
 }
 
 /* Parallax Section */

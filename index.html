@@ -4,7 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ondrův Mobil Vidia Edition - Budoucnost je teď">
     <title id="page-title">Ondrův Mobil Vidia Edition</title>
+
+    <!-- Font Preload for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+
     <link rel="stylesheet" href="style.css">
     <script src="lang.js" defer></script>
     <script src="script.js" defer></script>
@@ -153,7 +161,8 @@
                         ztráty kvality.</p>
                 </div>
                 <div class="camera-visual fade-in-up scroll-trigger delay-2">
-                    <img src="camera.png" alt="Camera System" class="camera-img">
+                    <img src="camera.png" alt="Camera System" class="camera-img" width="800" height="600"
+                        loading="lazy">
                 </div>
             </div>
         </section>

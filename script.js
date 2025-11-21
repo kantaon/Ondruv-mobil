@@ -5,16 +5,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.fade-in-up');
 
     if (loader) {
-        // Minimum load time of 2s for the animation to play out
+        // Minimum load time of 2s for the animation toplay out
         setTimeout(() => {
-            loader.classList.add('loaded');
+            loader.style.transition = 'opacity 0.5s ease-out';
+            loader.style.opacity = '0';
 
-            // Trigger animations after loader exits
+            // Remove loader from DOM after fade out
+            setTimeout(() => {
+                loader.style.display = 'none';
+                loader.remove(); // Clean up DOM
+            }, 500);
+
+            // Trigger animations after loader starts fading
             setTimeout(() => {
                 animatedElements.forEach(el => {
                     el.classList.add('visible');
                 });
-            }, 600);
+            }, 200);
         }, 2500);
     } else {
         // No loader (subpages), trigger animations immediately
@@ -25,20 +32,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     }
 
-    // Scroll observer
+    // Scroll observer - Optimized with requestAnimationFrame batching
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
 
+    // Batch animation updates for better performance
+    const animationQueue = new Set();
+    let isProcessing = false;
+
+    const processAnimations = () => {
+        animationQueue.forEach(target => {
+            target.classList.add('visible');
+            // Remove will-change after animation to save memory
+            setTimeout(() => {
+                target.style.willChange = 'auto';
+            }, 1000);
+        });
+        animationQueue.clear();
+        isProcessing = false;
+    };
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                // Optional: Stop observing once visible
-                // observer.unobserve(entry.target);
+                animationQueue.add(entry.target);
+                // Unobserve to prevent re-triggering
+                observer.unobserve(entry.target);
             }
         });
+
+        // Batch update using requestAnimationFrame
+        if (animationQueue.size > 0 && !isProcessing) {
+            isProcessing = true;
+            requestAnimationFrame(processAnimations);
+        }
     }, observerOptions);
 
     document.querySelectorAll('.scroll-trigger').forEach(el => {
