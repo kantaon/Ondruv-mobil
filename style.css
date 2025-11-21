@@ -756,6 +756,79 @@ body.loaded .space-background {
     }
 }
 
+/* Animated Lightning Bolts */
+.lightning {
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            rgba(139, 195, 255, 0.8) 30%,
+            rgba(255, 255, 255, 0.9) 50%,
+            rgba(139, 195, 255, 0.8) 70%,
+            transparent 100%);
+    opacity: 0;
+    filter: blur(1px);
+    box-shadow:
+        0 0 10px rgba(139, 195, 255, 0.6),
+        0 0 20px rgba(139, 195, 255, 0.4),
+        0 0 30px rgba(139, 195, 255, 0.2);
+    animation: lightning-strike 4s ease-in-out infinite;
+}
+
+.lightning-1 {
+    left: 20%;
+    transform: rotate(-15deg);
+    animation-delay: 0s;
+}
+
+.lightning-2 {
+    left: 60%;
+    transform: rotate(10deg);
+    animation-delay: 1.3s;
+    width: 3px;
+}
+
+.lightning-3 {
+    left: 85%;
+    transform: rotate(-8deg);
+    animation-delay: 2.8s;
+}
+
+@keyframes lightning-strike {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: translateY(-100%) scaleY(0);
+    }
+
+    5% {
+        opacity: 0.8;
+        transform: translateY(0) scaleY(1.2);
+    }
+
+    7% {
+        opacity: 0;
+    }
+
+    9% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+    }
+
+    12% {
+        opacity: 0;
+        transform: translateY(0) scaleY(1);
+    }
+
+    15%,
+    95% {
+        opacity: 0;
+        transform: translateY(0) scaleY(0.8);
+    }
+}
+
 */
 
 /* 2. 3D Holographic Tilt */
