@@ -1,10 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Initial hero animation
+    // Loader Logic
+    const loader = document.getElementById('loader');
+
+    // Minimum load time of 2s for the animation to play out
     setTimeout(() => {
-        document.querySelectorAll('.hero .fade-in-up').forEach(el => {
-            el.classList.add('visible');
-        });
-    }, 100);
+        loader.classList.add('loaded');
+
+        // Trigger hero animations after loader exits
+        setTimeout(() => {
+            document.querySelectorAll('.hero .fade-in-up').forEach(el => {
+                el.classList.add('visible');
+            });
+        }, 600); // Wait for curtain to go up
+    }, 2500);
 
     // Scroll observer
     const observerOptions = {
