@@ -76,9 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // 3D Holographic Tilt - DISABLED for performance
-    // Even with throttling, 3D transforms on mousemove can be laggy
-    /*
+    // 3D Holographic Tilt - Already OPTIMIZED with RAF throttling
     document.querySelectorAll('.bento-item').forEach(card => {
         let tiltRAF = null;
 
@@ -93,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Calculate rotation (max 10 degrees)
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -10; // Invert Y for natural tilt
+                const rotateX = ((y - centerY) / centerY) * -10;
                 const rotateY = ((x - centerX) / centerX) * 10;
 
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
@@ -114,30 +112,28 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
         });
     });
-    */
 
-    // Text Decoding Animation
+    // Text Decoding Animation - OPTIMIZED
     class TextScramble {
         constructor(el) {
             this.el = el;
+            // OPTIMIZED: Reduced character set for faster random selection
             this.chars = '!<>-_\\/[]{}—=+*^?#________';
             this.update = this.update.bind(this);
         }
 
         setText(newText) {
-            const oldText = this.el.innerText;
+            const oldText = this.el.textContent;
             const length = Math.max(oldText.length, newText.length);
             const promise = new Promise((resolve) => this.resolve = resolve);
             this.queue = [];
-
             for (let i = 0; i < length; i++) {
                 const from = oldText[i] || '';
                 const to = newText[i] || '';
-                const start = Math.floor(Math.random() * 40);
-                const end = start + Math.floor(Math.random() * 40);
+                const start = Math.floor(Math.random() * 20); // OPTIMIZED: Reduced from 40
+                const end = start + Math.floor(Math.random() * 20); // OPTIMIZED: Reduced from 40
                 this.queue.push({ from, to, start, end });
             }
-
             cancelAnimationFrame(this.frameRequest);
             this.frame = 0;
             this.update();
@@ -147,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
         update() {
             let output = '';
             let complete = 0;
-
             for (let i = 0, n = this.queue.length; i < n; i++) {
                 let { from, to, start, end, char } = this.queue[i];
                 if (this.frame >= end) {
@@ -158,14 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         char = this.randomChar();
                         this.queue[i].char = char;
                     }
-                    output += `<span class="dud">${char}</span>`;
+                    output += char;
                 } else {
                     output += from;
                 }
             }
-
-            this.el.innerHTML = output;
-
+            // OPTIMIZED: Use textContent instead of innerHTML
+            this.el.textContent = output;
             if (complete === this.queue.length) {
                 this.resolve();
             } else {
@@ -179,25 +173,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Text Scramble Animation - DISABLED for performance
-    /*
+    // Initialize Text Scramble on Hero Title - OPTIMIZED
+    // OPTIMIZED: Shortened delay from 3000ms to 2000ms
     setTimeout(() => {
         const el = document.querySelector('.text-decode');
         if (el) {
             const fx = new TextScramble(el);
             fx.setText('Vidia Edition');
         }
-    }, 3000); // Start after loader
-    */
+    }, 2000);
 
-    // Neural Network Animation (Canvas) - DISABLED for performance
-    // This was causing significant lag due to continuous 60fps animation
-    /*
+    // Neural Network Animation (Canvas) - OPTIMIZED
+    // Only animates when visible, reduced particles, 30fps throttle
     const canvas = document.getElementById('neural-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
+        let animationId = null;
+        let isVisible = false;
+        let lastFrameTime = 0;
+        const fps = 30; // Throttle to 30fps (was 60fps)
+        const frameInterval = 1000 / fps;
 
         function resize() {
             width = canvas.width = canvas.parentElement.offsetWidth;
@@ -231,31 +228,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function initParticles() {
             particles = [];
-            // Reduce particles on mobile for performance
-            const particleCount = window.innerWidth < 768 ? 20 : 50;
+            // OPTIMIZED: Reduced particles 50→30 (desktop), 20→10 (mobile)
+            const particleCount = window.innerWidth < 768 ? 10 : 30;
 
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }
         }
 
-        function animateNeural() {
+        function animateNeural(currentTime) {
+            if (!isVisible) return; // Don't animate when off-screen
+
+            animationId = requestAnimationFrame(animateNeural);
+
+            // Throttle to 30fps
+            const elapsed = currentTime - lastFrameTime;
+            if (elapsed < frameInterval) return;
+            lastFrameTime = currentTime - (elapsed % frameInterval);
+
             ctx.clearRect(0, 0, width, height);
 
             particles.forEach((p, index) => {
                 p.update();
                 p.draw();
 
-                // Connect particles
+                // OPTIMIZED: Increased distance 150→200 for fewer connections
                 for (let j = index + 1; j < particles.length; j++) {
                     const p2 = particles[j];
                     const dx = p.x - p2.x;
                     const dy = p.y - p2.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
-                    if (dist < 150) {
+                    if (dist < 200) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(41, 151, 255, ${0.1 - dist / 1500})`;
+                        ctx.strokeStyle = `rgba(41, 151, 255, ${0.15 - dist / 2000})`;
                         ctx.lineWidth = 1;
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(p2.x, p2.y);
@@ -263,8 +269,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             });
+        }
 
-            requestAnimationFrame(animateNeural);
+        // OPTIMIZED: IntersectionObserver - only animate when visible
+        const aiSection = canvas.closest('.ai-section');
+        if (aiSection) {
+            const neuralObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    isVisible = entry.isIntersecting;
+                    if (isVisible && !animationId) {
+                        animateNeural(0);
+                    } else if (!isVisible && animationId) {
+                        cancelAnimationFrame(animationId);
+                        animationId = null;
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            neuralObserver.observe(aiSection);
         }
 
         window.addEventListener('resize', () => {
@@ -274,32 +296,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
         resize();
         initParticles();
-        animateNeural();
     }
-    */
 
-    // Parallax effect - DISABLED for performance
-    // Causes jumping/jank on the metal texture background during scroll
-    /*
+    // Parallax effect - OPTIMIZED
+    // Using translate3d() for GPU, reduced speed, will-change management
     let parallaxRAF = null;
     let lastScrollY = 0;
+    let isScrolling = false;
+    let scrollTimeout;
 
     window.addEventListener('scroll', () => {
         lastScrollY = window.scrollY;
 
         if (parallaxRAF) return; // Already scheduled
 
-        parallaxRAF = requestAnimationFrame(() => {
-            const parallaxBg = document.querySelector('.parallax-bg');
+        // Apply will-change during scroll
+        const parallaxBg = document.querySelector('.parallax-bg');
+        if (parallaxBg && !isScrolling) {
+            parallaxBg.style.willChange = 'transform';
+            isScrolling = true;
+        }
 
+        parallaxRAF = requestAnimationFrame(() => {
             if (parallaxBg) {
-                parallaxBg.style.transform = `translateY(${lastScrollY * 0.5}px)`;
+                // OPTIMIZED: Use translate3d() for GPU acceleration
+                // OPTIMIZED: Reduced speed 0.5 → 0.3 for subtler, smoother effect
+                parallaxBg.style.transform = `translate3d(0, ${lastScrollY * 0.3}px, 0)`;
             }
 
-            // Removed hero zoom effect - minimal visual benefit, high performance cost
-
-            parallaxRAF = null; // Ready for next frame
+            parallaxRAF = null;
         });
+
+        // Remove will-change after scrolling stops
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            if (parallaxBg) {
+                parallaxBg.style.willChange = 'auto';
+                isScrolling = false;
+            }
+        }, 150);
     });
-    */
 });

@@ -685,51 +685,58 @@ p.intro {
     overflow: hidden;
 }
 
-/* Nebula Animations - DISABLED for performance
+/* Nebula Animations - OPTIMIZED for GPU performance */
 .nebula {
     position: absolute;
-    width: 1000px;
-    height: 1000px;
+    /* OPTIMIZED: Reduced size 1000px → 600px */
+    width: 600px;
+    height: 600px;
     background: radial-gradient(circle, rgba(41, 151, 255, 0.1) 0%, transparent 60%);
     border-radius: 50%;
-    filter: blur(60px);
-    animation: nebulaPulse 15s infinite alternate;
+    /* OPTIMIZED: Reduced blur 60px → 30px for better GPU performance */
+    filter: blur(30px);
+    /* OPTIMIZED: Slower animation 15s → 20s, scale-only (no translate) */
+    animation: nebulaPulse 20s infinite alternate;
+    will-change: transform;
+    /* GPU layering */
 }
 
 .nebula:nth-child(1) {
-    top: -200px;
-    left: -200px;
+    top: -100px;
+    left: -100px;
     animation-delay: 0s;
-    background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 60%);
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 60%);
 }
 
 .nebula:nth-child(2) {
-    bottom: -300px;
-    right: -100px;
-    animation-delay: -5s;
-    background: radial-gradient(circle, rgba(41, 151, 255, 0.15) 0%, transparent 60%);
+    bottom: -150px;
+    right: -50px;
+    animation-delay: -7s;
+    background: radial-gradient(circle, rgba(41, 151, 255, 0.12) 0%, transparent 60%);
 }
 
 .nebula:nth-child(3) {
     top: 40%;
     left: 40%;
-    width: 600px;
-    height: 600px;
-    animation-delay: -10s;
+    width: 400px;
+    height: 400px;
+    animation-delay: -14s;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
 }
 
 @keyframes nebulaPulse {
     0% {
-        transform: scale(1) translate(0, 0);
-        opacity: 0.5;
+        /* OPTIMIZED: Scale-only animation (removed translate for simpler GPU work) */
+        transform: scale(1);
+        opacity: 0.4;
     }
 
     100% {
-        transform: scale(1.2) translate(50px, -30px);
-        opacity: 0.8;
+        transform: scale(1.15);
+        opacity: 0.7;
     }
 }
+
 */
 
 /* 2. 3D Holographic Tilt */
