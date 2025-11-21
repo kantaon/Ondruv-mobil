@@ -44,8 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const processAnimations = () => {
         animationQueue.forEach(target => {
+            // Apply will-change right before animation
+            target.style.willChange = 'opacity, transform';
             target.classList.add('visible');
-            // Remove will-change after animation to save memory
+            // Remove will-change after animation completes
             setTimeout(() => {
                 target.style.willChange = 'auto';
             }, 1000);
@@ -74,27 +76,39 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // 3D Holographic Tilt
+    // 3D Holographic Tilt - Throttled for performance
     document.querySelectorAll('.bento-item').forEach(card => {
+        let tiltRAF = null;
+
         card.addEventListener('mousemove', e => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            if (tiltRAF) return; // Skip if already scheduled
 
-            // Calculate rotation (max 10 degrees)
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -10; // Invert Y for natural tilt
-            const rotateY = ((x - centerX) / centerX) * 10;
+            tiltRAF = requestAnimationFrame(() => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
 
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                // Calculate rotation (max 10 degrees)
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -10; // Invert Y for natural tilt
+                const rotateY = ((x - centerX) / centerX) * 10;
 
-            // Update spotlight
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+
+                // Update spotlight
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+
+                tiltRAF = null; // Ready for next frame
+            });
         });
 
         card.addEventListener('mouseleave', () => {
+            if (tiltRAF) {
+                cancelAnimationFrame(tiltRAF);
+                tiltRAF = null;
+            }
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
         });
     });
@@ -256,23 +270,25 @@ document.addEventListener('DOMContentLoaded', () => {
         animateNeural();
     }
 
-    // Parallax effect
+    // Parallax effect - Throttled with requestAnimationFrame
+    let parallaxRAF = null;
+    let lastScrollY = 0;
+
     window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        const parallaxBg = document.querySelector('.parallax-bg');
-        const hero = document.querySelector('.hero');
+        lastScrollY = window.scrollY;
 
-        if (parallaxBg) {
-            parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-        }
+        if (parallaxRAF) return; // Already scheduled
 
-        if (hero) {
-            // Zoom effect: scale up slightly as we scroll down
-            const scale = 1 + (scrolled * 0.0005);
-            // Limit the scale to avoid pixelation or excessive zoom
-            if (scale < 1.5) {
-                hero.style.backgroundSize = `${100 * scale}%`;
+        parallaxRAF = requestAnimationFrame(() => {
+            const parallaxBg = document.querySelector('.parallax-bg');
+
+            if (parallaxBg) {
+                parallaxBg.style.transform = `translateY(${lastScrollY * 0.5}px)`;
             }
-        }
+
+            // Removed hero zoom effect - minimal visual benefit, high performance cost
+
+            parallaxRAF = null; // Ready for next frame
+        });
     });
 });
