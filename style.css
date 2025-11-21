@@ -677,7 +677,7 @@ p.intro {
 @keyframes floatUp {
     0% {
         transform: translateY(0) scale(1);
-        opacity: 0;
+        opacity: 1;
     }
 
     50% {
@@ -688,4 +688,144 @@ p.intro {
         transform: translateY(-150px) scale(0);
         opacity: 0;
     }
+}
+
+/* 4. AI Section (Neural Net) */
+.ai-section {
+    position: relative;
+    padding: 150px 0;
+    text-align: center;
+    overflow: hidden;
+    background: #000;
+}
+
+#neural-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.ai-section .content-overlay {
+    position: relative;
+    z-index: 1;
+}
+
+/* 5. Ecosystem Section (Connectivity) */
+.ecosystem-section {
+    position: relative;
+    padding: 150px 0;
+    text-align: center;
+    background: #050505;
+    overflow: hidden;
+}
+
+.ecosystem-visual {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    z-index: 0;
+    opacity: 0.3;
+}
+
+.eco-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(41, 151, 255, 0.3);
+    box-shadow: 0 0 20px rgba(41, 151, 255, 0.1);
+}
+
+.eco-circle.core {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background: rgba(41, 151, 255, 0.1);
+    animation: pulseCore 3s infinite ease-in-out;
+}
+
+.eco-circle.orbit {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.orbit-1 {
+    width: 300px;
+    height: 300px;
+    animation: spin 20s linear infinite;
+    border-style: dashed;
+}
+
+.orbit-2 {
+    width: 450px;
+    height: 450px;
+    animation: spin 30s linear infinite reverse;
+}
+
+.orbit-3 {
+    width: 600px;
+    height: 600px;
+    animation: spin 40s linear infinite;
+    border-color: rgba(168, 85, 247, 0.2);
+}
+
+@keyframes pulseCore {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 20px rgba(41, 151, 255, 0.2);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        box-shadow: 0 0 50px rgba(41, 151, 255, 0.5);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* 6. Vibranium Metal Texture */
+.vibranium-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.metal-texture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(45deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.05) 2px,
+            rgba(255, 255, 255, 0.05) 4px),
+        linear-gradient(135deg, #1a1a1a 0%, #2c3e50 50%, #000 100%);
+    z-index: 0;
+    transition: background-position 0.1s;
+}
+
+.vibranium-card:hover .metal-texture {
+    background-position: var(--mouse-x) var(--mouse-y);
+    /* Subtle shift on hover */
+}
+
+.vibranium-card .bento-content {
+    position: relative;
+    z-index: 1;
 }
