@@ -5,10 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.fade-in-up');
 
     if (loader) {
-        // Minimum load time of 2s for the animation toplay out
+        // Minimum load time of 2s for the animation to play out
         setTimeout(() => {
             loader.style.transition = 'opacity 0.5s ease-out';
             loader.style.opacity = '0';
+
+            // FIXED: Add body.loaded class to reveal background
+            document.body.classList.add('loaded');
 
             // Remove loader from DOM after fade out
             setTimeout(() => {
