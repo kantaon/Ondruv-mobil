@@ -2,18 +2,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial hero animation
     // Loader Logic
     const loader = document.getElementById('loader');
+    const animatedElements = document.querySelectorAll('.fade-in-up');
 
-    // Minimum load time of 2s for the animation to play out
-    setTimeout(() => {
-        loader.classList.add('loaded');
-
-        // Trigger hero animations after loader exits
+    if (loader) {
+        // Minimum load time of 2s for the animation to play out
         setTimeout(() => {
-            document.querySelectorAll('.hero .fade-in-up').forEach(el => {
+            loader.classList.add('loaded');
+
+            // Trigger animations after loader exits
+            setTimeout(() => {
+                animatedElements.forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 600);
+        }, 2500);
+    } else {
+        // No loader (subpages), trigger animations immediately
+        setTimeout(() => {
+            animatedElements.forEach(el => {
                 el.classList.add('visible');
             });
-        }, 600); // Wait for curtain to go up
-    }, 2500);
+        }, 100);
+    }
 
     // Scroll observer
     const observerOptions = {
