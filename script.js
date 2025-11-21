@@ -76,7 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // 3D Holographic Tilt - Throttled for performance
+    // 3D Holographic Tilt - DISABLED for performance
+    // Even with throttling, 3D transforms on mousemove can be laggy
+    /*
     document.querySelectorAll('.bento-item').forEach(card => {
         let tiltRAF = null;
 
@@ -112,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
         });
     });
+    */
 
     // Text Decoding Animation
     class TextScramble {
@@ -176,7 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialize Text Scramble on Hero Title
+    // Text Scramble Animation - DISABLED for performance
+    /*
     setTimeout(() => {
         const el = document.querySelector('.text-decode');
         if (el) {
@@ -184,8 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
             fx.setText('Vidia Edition');
         }
     }, 3000); // Start after loader
+    */
 
-    // Neural Network Animation (Canvas)
+    // Neural Network Animation (Canvas) - DISABLED for performance
+    // This was causing significant lag due to continuous 60fps animation
+    /*
     const canvas = document.getElementById('neural-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
@@ -269,8 +276,11 @@ document.addEventListener('DOMContentLoaded', () => {
         initParticles();
         animateNeural();
     }
+    */
 
-    // Parallax effect - Throttled with requestAnimationFrame
+    // Parallax effect - DISABLED for performance
+    // Causes jumping/jank on the metal texture background during scroll
+    /*
     let parallaxRAF = null;
     let lastScrollY = 0;
 
@@ -291,4 +301,5 @@ document.addEventListener('DOMContentLoaded', () => {
             parallaxRAF = null; // Ready for next frame
         });
     });
+    */
 });

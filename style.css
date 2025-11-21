@@ -685,6 +685,7 @@ p.intro {
     overflow: hidden;
 }
 
+/* Nebula Animations - DISABLED for performance
 .nebula {
     position: absolute;
     width: 1000px;
@@ -729,6 +730,7 @@ p.intro {
         opacity: 0.8;
     }
 }
+*/
 
 /* 2. 3D Holographic Tilt */
 .bento-grid {
