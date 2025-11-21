@@ -433,7 +433,10 @@ p.intro {
 }
 
 .camera-img {
-    max-width: 100%;
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
     border-radius: 20px;
     box-shadow: 0 0 100px rgba(255, 255, 255, 0.1);
 }
@@ -641,6 +644,26 @@ p.intro {
         grid-template-columns: 1fr;
         gap: 30px;
         margin-top: 40px;
+    }
+
+    /* Camera section tidy on mobile */
+    .camera-section .container {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+    }
+
+    .camera-visual {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .camera-img {
+        max-height: 70vh;
+        object-fit: contain;
+        border-radius: 16px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
     }
 
     .nav-content {
