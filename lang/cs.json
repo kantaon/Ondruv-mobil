@@ -1,6 +1,7 @@
 {
     "nav": {
         "logo": "Ondra",
+        "overview": "Přehled",
         "buy": "Koupit",
         "about": "O nás"
     },
@@ -9,7 +10,7 @@
         "subtitle": "Vidia Edition",
         "tagline": "Budoucnost je teď. A je rychlejší než kdy dřív.",
         "btnBuy": "Koupit",
-        "btnLearn": "Zjistit více"
+        "btnLearn": "Zjistit více >"
     },
     "features": {
         "chip": {
@@ -19,6 +20,10 @@
         },
         "titanium": {
             "title": "Titan. Nezničitelný."
+        },
+        "vibranium": {
+            "title": "Kovaný ve Vibraniu.",
+            "desc": "Nezničitelná elegance."
         },
         "ai": {
             "title": "Ondra Intelligence.",
@@ -50,32 +55,20 @@
         }
     },
     "camera": {
-        "title": "Kamera budoucnosti.",
-        "subtitle": "48MP SuperVision.",
-        "desc": "Každý shot je masterpiece."
+        "title": "500MP Quantum.",
+        "desc": "Vidí i to, co neexistuje. 1000x Optický Zoom bez ztráty kvality."
     },
     "footer": {
-        "shop": {
-            "title": "Obchod",
-            "mac": "Mac",
-            "ipad": "iPad",
-            "watch": "Watch"
+        "business1": "Ondra a byznys",
+        "business2": "Nakupování pro korporace",
+        "values": {
+            "title": "Hodnoty",
+            "sustainability": "Udržitelnost",
+            "environment": "Životní prostředí",
+            "privacy": "Soukromí"
         },
-        "services": {
-            "title": "Služby",
-            "services": "Služby"
-        },
-        "company": {
-            "title": "Firma",
-            "business": "Business",
-            "values": "Hodnoty"
-        },
-        "about": {
-            "title": "O Ondra",
-            "about": "O nás"
-        },
-        "legal": "© 2024 Ondra Inc. Všechna práva vyhrazena.",
-        "privacy": "Ochrana soukromí",
-        "terms": "Podmínky"
+        "copyright": "© 2025 Ondrův Mobil. Všechna práva vyhrazena.",
+        "privacyPolicy": "Zásady ochrany osobních údajů",
+        "terms": "Podmínky užití"
     }
 }

@@ -1,6 +1,7 @@
 {
     "nav": {
         "logo": "Ondra",
+        "overview": "Overview",
         "buy": "Buy",
         "about": "About"
     },
@@ -9,7 +10,7 @@
         "subtitle": "Vidia Edition",
         "tagline": "The future is now. And faster than ever.",
         "btnBuy": "Buy",
-        "btnLearn": "Learn more"
+        "btnLearn": "Learn more >"
     },
     "features": {
         "chip": {
@@ -19,6 +20,10 @@
         },
         "titanium": {
             "title": "Titanium. Indestructible."
+        },
+        "vibranium": {
+            "title": "Forged in Vibranium.",
+            "desc": "Indestructible elegance."
         },
         "ai": {
             "title": "Ondra Intelligence.",
@@ -50,32 +55,20 @@
         }
     },
     "camera": {
-        "title": "Camera of the future.",
-        "subtitle": "48MP SuperVision.",
-        "desc": "Every shot is a masterpiece."
+        "title": "500MP Quantum.",
+        "desc": "Sees even what doesn't exist. 1000x Optical Zoom without quality loss."
     },
     "footer": {
-        "shop": {
-            "title": "Shop",
-            "mac": "Mac",
-            "ipad": "iPad",
-            "watch": "Watch"
+        "business1": "Ondra for Business",
+        "business2": "Corporate Shopping",
+        "values": {
+            "title": "Values",
+            "sustainability": "Sustainability",
+            "environment": "Environment",
+            "privacy": "Privacy"
         },
-        "services": {
-            "title": "Services",
-            "services": "Services"
-        },
-        "company": {
-            "title": "Company",
-            "business": "Business",
-            "values": "Values"
-        },
-        "about": {
-            "title": "About Ondra",
-            "about": "About Us"
-        },
-        "legal": "© 2024 Ondra Inc. All rights reserved.",
-        "privacy": "Privacy",
-        "terms": "Terms"
+        "copyright": "© 2025 Ondra's Phone. All rights reserved.",
+        "privacyPolicy": "Privacy Policy",
+        "terms": "Terms of Use"
     }
 }

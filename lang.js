@@ -24,6 +24,14 @@ const i18n = {
     },
 
     applyTranslations() {
+        // Update page title
+        const titleEl = document.getElementById('page-title');
+        if (titleEl) {
+            const titleText = this.currentLang === 'cs' ? 'Ondrův Mobil Vidia Edition' : "Ondra's Phone Vidia Edition";
+            titleEl.textContent = titleText;
+            document.title = titleText;
+        }
+
         // Find all elements with data-i18n attribute
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');

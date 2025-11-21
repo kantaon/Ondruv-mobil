@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ondrův Mobil Vidia Edition</title>
+    <title id="page-title">Ondrův Mobil Vidia Edition</title>
     <link rel="stylesheet" href="style.css">
     <script src="lang.js" defer></script>
     <script src="script.js" defer></script>
@@ -13,7 +13,7 @@
 <body>
     <div id="loader">
         <div class="loader-content">
-            <div class="loader-logo">Ondrův Mobil</div>
+            <div class="loader-logo" data-i18n="hero.title">Ondrův Mobil</div>
             <div class="loader-line"></div>
         </div>
     </div>
@@ -26,7 +26,7 @@
                     <button id="lang-cs" class="lang-btn active" title="Čeština">🇨🇿</button>
                     <button id="lang-en" class="lang-btn" title="English">🇬🇧</button>
                 </div>
-                <a href="#hero">iPhone</a>
+                <a href="#hero" data-i18n="nav.overview">Přehled</a>
                 <a href="#specs" data-i18n="nav.buy">Koupit</a>
                 <a href="about.html" data-i18n="nav.about">O nás</a>
             </div>
@@ -67,7 +67,7 @@
         <section class="parallax-section">
             <div class="parallax-bg"></div>
             <div class="content-overlay">
-                <h2 class="fade-in-up scroll-trigger">Kovaný ve Vibraniu.</h2>
+                <h2 class="fade-in-up scroll-trigger" data-i18n="features.vibranium.title">Kovaný ve Vibraniu.</h2>
             </div>
         </section>
 
@@ -138,7 +138,7 @@
                     <div class="metal-texture"></div>
                     <div class="bento-content">
                         <h2 data-i18n="features.titanium.title">Titan. Nezničitelný.</h2>
-                        <p>Nezničitelná elegance.</p>
+                        <p data-i18n="features.vibranium.desc">Nezničitelná elegance.</p>
                     </div>
                 </div>
             </div>
@@ -147,8 +147,9 @@
         <section class="camera-section">
             <div class="container">
                 <div class="camera-content">
-                    <h2 class="fade-in-up scroll-trigger">500MP Quantum.</h2>
-                    <p class="intro fade-in-up scroll-trigger delay-1">Vidí i to, co neexistuje. 1000x Optický Zoom bez
+                    <h2 class="fade-in-up scroll-trigger" data-i18n="camera.title">500MP Quantum.</h2>
+                    <p class="intro fade-in-up scroll-trigger delay-1" data-i18n="camera.desc">Vidí i to, co neexistuje.
+                        1000x Optický Zoom bez
                         ztráty kvality.</p>
                 </div>
                 <div class="camera-visual fade-in-up scroll-trigger delay-2">
@@ -163,22 +164,23 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <ul>
-                        <li><a href="business.html">Ondra a byznys</a></li>
-                        <li><a href="business.html">Nakupování pro korporace</a></li>
+                        <li><a href="business.html" data-i18n="footer.business1">Ondra a byznys</a></li>
+                        <li><a href="business.html" data-i18n="footer.business2">Nakupování pro korporace</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Hodnoty</h4>
+                    <h4 data-i18n="footer.values.title">Hodnoty</h4>
                     <ul>
-                        <li><a href="values.html">Udržitelnost</a></li>
-                        <li><a href="values.html">Životní prostředí</a></li>
-                        <li><a href="values.html">Soukromí</a></li>
+                        <li><a href="values.html" data-i18n="footer.values.sustainability">Udržitelnost</a></li>
+                        <li><a href="values.html" data-i18n="footer.values.environment">Životní prostředí</a></li>
+                        <li><a href="values.html" data-i18n="footer.values.privacy">Soukromí</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Ondrův Mobil. Všechna práva vyhrazena. <a href="support.html">Zásady ochrany osobních
-                        údajů</a> | <a href="support.html">Podmínky užití</a></p>
+                <p><span data-i18n="footer.copyright">&copy; 2025 Ondrův Mobil. Všechna práva vyhrazena.</span> <a
+                        href="support.html" data-i18n="footer.privacyPolicy">Zásady ochrany osobních
+                        údajů</a> | <a href="support.html" data-i18n="footer.terms">Podmínky užití</a></p>
             </div>
         </div>
     </footer>
