@@ -7,6 +7,7 @@
     --text-color: #f5f5f7;
     --accent-color: #2997ff;
     --section-padding: 80px 0;
+    --nav-height: 64px;
 }
 
 /* Performance Optimizations */
@@ -217,12 +218,78 @@ p.intro {
     background-size: cover;
     background-position: center;
     position: relative;
+    overflow: hidden;
+}
+
+.hero-aurora {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: screen;
+}
+
+.aurora-band {
+    position: absolute;
+    --aurora-rot: -8deg;
+    width: 140%;
+    height: 60%;
+    filter: blur(45px);
+    opacity: 0.62;
+    background: linear-gradient(
+        120deg,
+        rgba(140, 219, 255, 0.32) 0%,
+        rgba(90, 170, 255, 0.16) 35%,
+        rgba(255, 255, 255, 0.32) 55%,
+        rgba(110, 160, 250, 0.12) 75%,
+        rgba(80, 130, 230, 0.04) 90%
+    );
+    animation: auroraSweep 14s ease-in-out infinite alternate, auroraPulse 7s ease-in-out infinite;
+}
+
+.band-1 {
+    top: -10%;
+    left: -20%;
+    animation-delay: 0s, 0s;
+}
+
+.band-2 {
+    top: 20%;
+    left: -30%;
+    --aurora-rot: -3deg;
+    opacity: 0.5;
+    animation-duration: 16s, 8s;
+    animation-delay: 2s, 1s;
+}
+
+.band-3 {
+    top: 45%;
+    left: -25%;
+    --aurora-rot: -12deg;
+    opacity: 0.45;
+    animation-duration: 18s, 9s;
+    animation-delay: 4s, 0.5s;
+}
+
+@keyframes auroraSweep {
+    0% { transform: translateX(-18%) rotate(var(--aurora-rot, -8deg)); }
+    45% { transform: translateX(6%) rotate(calc(var(--aurora-rot, -8deg) + 3deg)); }
+    100% { transform: translateX(22%) rotate(calc(var(--aurora-rot, -8deg) - 3deg)); }
+}
+
+@keyframes auroraPulse {
+    0%, 100% { opacity: 0.38; }
+    35% { opacity: 0.75; }
+    70% { opacity: 0.9; }
 }
 
 .hero-content {
     padding-top: 60px;
     max-width: 800px;
     padding: 0 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .delay-1 {
@@ -518,7 +585,7 @@ p.intro {
     }
 
     .container {
-        padding: 0 24px;
+        padding: 0 16px;
         /* More breathing room */
     }
 
@@ -581,26 +648,25 @@ p.intro {
     }
 
     .nav-links {
-        display: none;
-        /* Hide links on mobile for now to keep it clean, or use hamburger if requested. 
-                         For "uncompromising", a clean simple nav is better than crowded links. 
-                         Let's make it a scrollable row instead of hiding. */
         display: flex;
-        gap: 15px;
+        gap: 10px;
         overflow-x: auto;
         padding-bottom: 0;
+        padding-top: 8px;
         -webkit-overflow-scrolling: touch;
         margin-left: 20px;
+        scrollbar-width: none;
     }
 
     .nav-links a {
         margin-left: 0;
         white-space: nowrap;
-        font-size: 14px;
+        font-size: 13px;
+        padding: 10px 10px;
     }
 
     .logo {
-        font-size: 18px;
+        font-size: 16px;
         flex-shrink: 0;
     }
 
@@ -628,6 +694,16 @@ p.intro {
         width: 100%;
         /* Prevent overflow */
         transform: translate(-50%, -50%) scale(0.55);
+    }
+
+    /* Lighter aurora on mobile for performance/contrast */
+    .aurora-band {
+        filter: blur(32px);
+        opacity: 0.48;
+    }
+
+    .band-3 {
+        display: none;
     }
 }
 
@@ -751,85 +827,11 @@ body.loaded .space-background {
     }
 
     100% {
-        transform: scale(1.15);
-        opacity: 0.7;
+        transform: scale(1.12);
+        opacity: 0.65;
     }
 }
 
-/* Animated Lightning Bolts */
-.lightning {
-    position: absolute;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(to bottom,
-            transparent 0%,
-            rgba(139, 195, 255, 0.8) 30%,
-            rgba(255, 255, 255, 0.9) 50%,
-            rgba(139, 195, 255, 0.8) 70%,
-            transparent 100%);
-    opacity: 0;
-    filter: blur(1px);
-    box-shadow:
-        0 0 10px rgba(139, 195, 255, 0.6),
-        0 0 20px rgba(139, 195, 255, 0.4),
-        0 0 30px rgba(139, 195, 255, 0.2);
-    animation: lightning-strike 4s ease-in-out infinite;
-}
-
-.lightning-1 {
-    left: 20%;
-    transform: rotate(-15deg);
-    animation-delay: 0s;
-}
-
-.lightning-2 {
-    left: 60%;
-    transform: rotate(10deg);
-    animation-delay: 1.3s;
-    width: 3px;
-}
-
-.lightning-3 {
-    left: 85%;
-    transform: rotate(-8deg);
-    animation-delay: 2.8s;
-}
-
-@keyframes lightning-strike {
-
-    0%,
-    100% {
-        opacity: 0;
-        transform: translateY(-100%) scaleY(0);
-    }
-
-    5% {
-        opacity: 0.8;
-        transform: translateY(0) scaleY(1.2);
-    }
-
-    7% {
-        opacity: 0;
-    }
-
-    9% {
-        opacity: 1;
-        transform: translateY(0) scaleY(1);
-    }
-
-    12% {
-        opacity: 0;
-        transform: translateY(0) scaleY(1);
-    }
-
-    15%,
-    95% {
-        opacity: 0;
-        transform: translateY(0) scaleY(0.8);
-    }
-}
-
-*/
 
 /* 2. 3D Holographic Tilt */
 .bento-grid {
