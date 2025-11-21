@@ -4,16 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podpora - Ondrův Mobil</title>
+    <title>Pro firmy - Ondrův Mobil</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .support-hero {
-            height: 60vh;
+        .product-hero {
+            height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             flex-direction: column;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+        }
+
+        .coming-soon {
+            font-size: 24px;
+            color: #86868b;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -29,13 +36,10 @@
         </div>
     </nav>
 
-    <div class="container support-hero">
-        <h1 class="fade-in-up">Centrum podpory</h1>
-        <p class="intro fade-in-up delay-1">Jak vám můžeme pomoci s vaším zařízením z budoucnosti?</p>
-        <div style="margin-top: 40px;" class="fade-in-up delay-2">
-            <input type="text" placeholder="Hledat v podpoře..."
-                style="padding: 15px; width: 300px; border-radius: 12px; border: none;">
-        </div>
+    <div class="product-hero">
+        <h1 class="fade-in-up" style="font-size: 80px;">Ondra Business.</h1>
+        <h2 class="fade-in-up delay-1">Nástroje pro úspěch.</h2>
+        <p class="coming-soon fade-in-up delay-2">Řešení pro korporace i startupy.</p>
     </div>
 
     <footer class="main-footer">
@@ -61,7 +65,7 @@
                 <div class="footer-col">
                     <h4>Pro firmy</h4>
                     <ul>
-                        <li><a href="business.html">Ondra a byznys</a></li>
+                        <li><a href="business.html" class="active">Ondra a byznys</a></li>
                         <li><a href="business.html">Nakupování pro korporace</a></li>
                     </ul>
                 </div>
@@ -73,6 +77,9 @@
                         <li><a href="values.html">Soukromí</a></li>
                     </ul>
                 </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ondrův Mobil. Všechna práva vyhrazena.</p>
             </div>
         </div>
     </footer>
