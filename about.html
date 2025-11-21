@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O nás - Ondrův Mobil</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .about-hero {
+            padding: 150px 20px 100px;
+            text-align: center;
+        }
+
+        .about-section {
+            padding: 100px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .about-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .about-text {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .about-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #86868b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-desc {
+            font-size: 21px;
+            line-height: 1.5;
+            color: #a1a1a6;
+        }
+
+        @media (max-width: 768px) {
+
+            .about-section,
+            .about-section.reverse {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-text {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="sticky-nav">
+        <div class="container nav-content">
+            <span class="logo"><a href="index.html" style="color:white; text-decoration:none;">Ondrův Mobil</a></span>
+            <div class="nav-links">
+                <a href="index.html">Domů</a>
+                <a href="about.html" class="active">O nás</a>
+                <a href="order.html" class="btn-small">Koupit</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="about-hero">
+            <h1 class="fade-in-up" style="font-size: 64px; margin-bottom: 20px;">Náš příběh.</h1>
+            <p class="intro fade-in-up delay-1">Od garážového snu k intergalaktickému impériu.</p>
+        </header>
+
+        <section class="about-section fade-in-up scroll-trigger">
+            <div class="about-text">
+                <h2 class="about-title">Vize za horizontem.</h2>
+                <p class="about-desc">Všechno to začalo myšlenkou. Ondra, zakladatel a vizionář, se nespokojil s tím, co
+                    bylo možné. Chtěl to, co bylo nemožné. Viděl budoucnost, kde technologie není jen nástroj, ale
+                    prodloužení lidské mysli.</p>
+            </div>
+            <div class="about-image">
+                <img src="founder.jpg" alt="Zakladatel Ondra">
+            </div>
+        </section>
+
+        <section class="about-section reverse fade-in-up scroll-trigger">
+            <div class="about-text">
+                <h2 class="about-title">Zrozeno v laboratoři.</h2>
+                <p class="about-desc">V tajných laboratořích Vidia Research, hluboko pod povrchem, vznikají čipy, které
+                    mění pravidla hry. Zde se rodí výkon, který pohání nejen telefony, ale celé civilizace.</p>
+            </div>
+            <div class="about-image">
+                <img src="tech.jpg" alt="Vidia Research Lab">
+            </div>
+        </section>
+
+        <section class="about-section fade-in-up scroll-trigger">
+            <div class="about-text">
+                <h2 class="about-title">Věrnost a Rychlost.</h2>
+                <p class="about-desc">Naše hodnoty jsou jednoduché. Být věrní našim zákazníkům a rychlí jako blesk. Náš
+                    maskot nám každý den připomíná, že loajalita je tou nejcennější měnou.</p>
+            </div>
+            <div class="about-image">
+                <img src="values.jpg" alt="Maskot">
+            </div>
+        </section>
+
+        <section class="about-section reverse fade-in-up scroll-trigger">
+            <div class="about-text">
+                <h2 class="about-title">Technologie pro lidi.</h2>
+                <p class="about-desc">Na konci dne nejde o čipy ani o Vibranium. Jde o spojení. O to, abychom byli blíže
+                    těm, na kterých nám záleží. Ondrův Mobil je mostem mezi srdci.</p>
+            </div>
+            <div class="about-image">
+                <img src="story.jpg" alt="Spojení">
+            </div>
+        </section>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ondrův Mobil. Všechna práva vyhrazena.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
