@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objednat - Ondrův Mobil Vidia Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .order-container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 40px;
+            background: #1d1d1f;
+            border-radius: 30px;
+            text-align: center;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border: 1px solid #424245;
+            background: #000;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        button {
+            background: #2997ff;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background: #0077ed;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="sticky-nav">
+        <div class="container nav-content">
+            <span class="logo"><a href="index.html" style="color:white; text-decoration:none;">Ondrův Mobil</a></span>
+            <div class="nav-links">
+                <a href="index.html">Zpět na přehled</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="order-container">
+            <h1 class="fade-in-up">Předobjednat Vidia Edition</h1>
+            <p style="margin-bottom: 30px; color: #86868b;">Doručení v roce 3025.</p>
+
+            <form
+                onsubmit="event.preventDefault(); alert('Děkujeme za objednávku! Faktura na 1 000 000 Kč byla odeslána.');">
+                <input type="text" placeholder="Jméno a Příjmení" required>
+                <input type="email" placeholder="Email" required>
+                <select>
+                    <option>Vidia Edition - 1TB (99 990 Kč)</option>
+                    <option>Vidia Edition Pro - 10TB (199 990 Kč)</option>
+                    <option>Vidia Edition Ultimate - ∞TB (Priceless)</option>
+                </select>
+                <button type="submit">Závazně objednat</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
