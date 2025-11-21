@@ -528,6 +528,15 @@ p.intro {
         border-left: none;
         margin: 0;
         padding: 0;
+        padding: 10px;
+        /* Touch target */
+    }
+
+    /* Mobile Ecosystem Scaling */
+    .ecosystem-visual {
+        width: 100%;
+        /* Prevent overflow */
+        transform: translate(-50%, -50%) scale(0.55);
     }
 }
 
@@ -555,8 +564,10 @@ p.intro {
     z-index: 2;
 }
 
-.bento-item:hover::before {
-    opacity: 1;
+@media (hover: hover) {
+    .bento-item:hover::before {
+        opacity: 1;
+    }
 }
 
 /* 2. Cinematic Text Shine */
@@ -820,9 +831,11 @@ p.intro {
     transition: background-position 0.1s;
 }
 
-.vibranium-card:hover .metal-texture {
-    background-position: var(--mouse-x) var(--mouse-y);
-    /* Subtle shift on hover */
+@media (hover: hover) {
+    .vibranium-card:hover .metal-texture {
+        background-position: var(--mouse-x) var(--mouse-y);
+        /* Subtle shift on hover */
+    }
 }
 
 .vibranium-card .bento-content {

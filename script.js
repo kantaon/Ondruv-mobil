@@ -181,7 +181,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function initParticles() {
             particles = [];
-            for (let i = 0; i < 50; i++) {
+            // Reduce particles on mobile for performance
+            const particleCount = window.innerWidth < 768 ? 20 : 50;
+
+            for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }
         }
