@@ -339,6 +339,18 @@ p.intro {
     padding-left: 10px;
 }
 
+/* 3. Energy Particles */
+.particle-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
 /* Loader */
 #loader {
     position: fixed;
@@ -563,16 +575,93 @@ p.intro {
     }
 }
 
-/* 3. Energy Particles */
-.particle-container {
-    position: absolute;
+/* Ultra-Wow Enhancements */
+
+/* 1. Dynamic Deep Space Background */
+.space-background {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: 1;
+    z-index: -2;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
     overflow: hidden;
+}
+
+.nebula {
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    background: radial-gradient(circle, rgba(41, 151, 255, 0.1) 0%, transparent 60%);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: nebulaPulse 15s infinite alternate;
+}
+
+.nebula:nth-child(1) {
+    top: -200px;
+    left: -200px;
+    animation-delay: 0s;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 60%);
+}
+
+.nebula:nth-child(2) {
+    bottom: -300px;
+    right: -100px;
+    animation-delay: -5s;
+    background: radial-gradient(circle, rgba(41, 151, 255, 0.15) 0%, transparent 60%);
+}
+
+.nebula:nth-child(3) {
+    top: 40%;
+    left: 40%;
+    width: 600px;
+    height: 600px;
+    animation-delay: -10s;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+}
+
+@keyframes nebulaPulse {
+    0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.2) translate(50px, -30px);
+        opacity: 0.8;
+    }
+}
+
+/* 2. 3D Holographic Tilt */
+.bento-grid {
+    perspective: 1000px;
+    /* Enable 3D space */
+}
+
+.bento-item {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    transition: transform 0.1s ease-out;
+    /* Fast response for tilt */
+    will-change: transform;
+}
+
+.bento-content {
+    transform: translateZ(30px);
+    /* Pop content out */
+}
+
+/* 3. Text Decoding */
+.text-decode {
+    font-family: monospace;
+    /* Tech feel during decode */
+}
+
+.text-decode.decoded {
+    font-family: var(--font-main);
+    /* Revert to main font */
 }
 
 .energy-particle {
