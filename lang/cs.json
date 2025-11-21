@@ -1,0 +1,81 @@
+{
+    "nav": {
+        "logo": "Ondra",
+        "buy": "Koupit",
+        "about": "O nás"
+    },
+    "hero": {
+        "title": "Ondrův Mobil",
+        "subtitle": "Vidia Edition",
+        "tagline": "Budoucnost je teď. A je rychlejší než kdy dřív.",
+        "btnBuy": "Koupit",
+        "btnLearn": "Zjistit více"
+    },
+    "features": {
+        "chip": {
+            "title": "Vidia G-Force 9000.",
+            "subtitle": "Výkon z jiné galaxie.",
+            "desc": "První čip na světě s neurální sítí 5. generace. Zvládne renderovat realitu rychleji, než ji vidíte."
+        },
+        "titanium": {
+            "title": "Titan. Nezničitelný."
+        },
+        "ai": {
+            "title": "Ondra Intelligence.",
+            "subtitle": "Myslí dřív než vy.",
+            "desc": "Neurální engine s 50 biliony operací za sekundu. Předvídá vaše potřeby, optimalizuje výkon a chrání vaše soukromí."
+        },
+        "ecosystem": {
+            "title": "Jeden dotyk. Vše propojeno.",
+            "desc": "OndraMac, OndraPad, OndraWatch. V dokonalé harmonii."
+        }
+    },
+    "specs": {
+        "title": "Specifikace, které mění hru.",
+        "chip": {
+            "title": "Vidia G-Force 9000",
+            "desc": "Nejvýkonnější čip v historii mobilů."
+        },
+        "battery": {
+            "title": "Jaderná baterie",
+            "desc": "Výdrž 50 let na jedno nabití."
+        },
+        "os": {
+            "title": "OndraOS 1.0.",
+            "desc": "Rozhraní zítřka."
+        },
+        "vibranium": {
+            "title": "Vibranium.",
+            "desc": "Nezničitelná elegance."
+        }
+    },
+    "camera": {
+        "title": "Kamera budoucnosti.",
+        "subtitle": "48MP SuperVision.",
+        "desc": "Každý shot je masterpiece."
+    },
+    "footer": {
+        "shop": {
+            "title": "Obchod",
+            "mac": "Mac",
+            "ipad": "iPad",
+            "watch": "Watch"
+        },
+        "services": {
+            "title": "Služby",
+            "services": "Služby"
+        },
+        "company": {
+            "title": "Firma",
+            "business": "Business",
+            "values": "Hodnoty"
+        },
+        "about": {
+            "title": "O Ondra",
+            "about": "O nás"
+        },
+        "legal": "© 2024 Ondra Inc. Všechna práva vyhrazena.",
+        "privacy": "Ochrana soukromí",
+        "terms": "Podmínky"
+    }
+}

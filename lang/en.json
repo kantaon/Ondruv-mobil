@@ -1,0 +1,81 @@
+{
+    "nav": {
+        "logo": "Ondra",
+        "buy": "Buy",
+        "about": "About"
+    },
+    "hero": {
+        "title": "Ondra's Phone",
+        "subtitle": "Vidia Edition",
+        "tagline": "The future is now. And faster than ever.",
+        "btnBuy": "Buy",
+        "btnLearn": "Learn more"
+    },
+    "features": {
+        "chip": {
+            "title": "Vidia G-Force 9000.",
+            "subtitle": "Power from another galaxy.",
+            "desc": "The world's first chip with 5th generation neural network. Renders reality faster than you can see it."
+        },
+        "titanium": {
+            "title": "Titanium. Indestructible."
+        },
+        "ai": {
+            "title": "Ondra Intelligence.",
+            "subtitle": "Thinks ahead of you.",
+            "desc": "Neural engine with 50 trillion operations per second. Predicts your needs, optimizes performance, and protects your privacy."
+        },
+        "ecosystem": {
+            "title": "One touch. Everything connected.",
+            "desc": "OndraMac, OndraPad, OndraWatch. In perfect harmony."
+        }
+    },
+    "specs": {
+        "title": "Specs that change the game.",
+        "chip": {
+            "title": "Vidia G-Force 9000",
+            "desc": "The most powerful chip in mobile history."
+        },
+        "battery": {
+            "title": "Nuclear Battery",
+            "desc": "50 years on a single charge."
+        },
+        "os": {
+            "title": "OndraOS 1.0.",
+            "desc": "Interface of tomorrow."
+        },
+        "vibranium": {
+            "title": "Vibranium.",
+            "desc": "Indestructible elegance."
+        }
+    },
+    "camera": {
+        "title": "Camera of the future.",
+        "subtitle": "48MP SuperVision.",
+        "desc": "Every shot is a masterpiece."
+    },
+    "footer": {
+        "shop": {
+            "title": "Shop",
+            "mac": "Mac",
+            "ipad": "iPad",
+            "watch": "Watch"
+        },
+        "services": {
+            "title": "Services",
+            "services": "Services"
+        },
+        "company": {
+            "title": "Company",
+            "business": "Business",
+            "values": "Values"
+        },
+        "about": {
+            "title": "About Ondra",
+            "about": "About Us"
+        },
+        "legal": "© 2024 Ondra Inc. All rights reserved.",
+        "privacy": "Privacy",
+        "terms": "Terms"
+    }
+}

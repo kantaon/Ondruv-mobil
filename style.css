@@ -124,6 +124,34 @@ p.intro {
     opacity: 1;
 }
 
+/* Language Switcher */
+.lang-switcher {
+    display: inline-flex;
+    gap: 8px;
+    margin-right: 20px;
+    align-items: center;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s, transform 0.2s;
+    padding: 0;
+    line-height: 1;
+}
+
+.lang-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.lang-btn.active {
+    opacity: 1;
+}
+
 .btn-small {
     background: var(--accent-color);
     padding: 4px 10px;

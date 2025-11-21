@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ondrův Mobil Vidia Edition</title>
     <link rel="stylesheet" href="style.css">
+    <script src="lang.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -18,12 +20,15 @@
 
     <nav class="sticky-nav">
         <div class="container nav-content">
-            <span class="logo">Ondrův Mobil</span>
+            <div class="logo" data-i18n="nav.logo">Ondra</div>
             <div class="nav-links">
-                <a href="#hero">Přehled</a>
-                <a href="#specs">Specifikace</a>
-                <a href="about.html">O nás</a>
-                <a href="order.html" class="btn-small">Koupit</a>
+                <div class="lang-switcher">
+                    <button id="lang-cs" class="lang-btn active" title="Čeština">🇨🇿</button>
+                    <button id="lang-en" class="lang-btn" title="English">🇬🇧</button>
+                </div>
+                <a href="#hero">iPhone</a>
+                <a href="#specs" data-i18n="nav.buy">Koupit</a>
+                <a href="about.html" data-i18n="nav.about">O nás</a>
             </div>
         </div>
     </nav>
@@ -36,11 +41,13 @@
 
     <header class="hero" id="hero">
         <div class="hero-content">
-            <h1 class="fade-in-up text-shine">Ondrův Mobil<br><span class="text-decode">Vidia Edition</span></h1>
-            <p class="intro fade-in-up delay-1">Budoucnost je teď. A je rychlejší než kdy dřív.</p>
+            <h1 class="fade-in-up text-shine" data-i18n="hero.title">Ondrův Mobil<br><span class="text-decode"
+                    data-i18n="hero.subtitle">Vidia Edition</span></h1>
+            <p class="intro fade-in-up delay-1" data-i18n="hero.tagline">Budoucnost je teď. A je rychlejší než kdy dřív.
+            </p>
             <div class="fade-in-up delay-2" style="margin-top: 30px;">
-                <a href="order.html" class="btn">Koupit</a>
-                <a href="#specs" class="link">Zjistit více ></a>
+                <a href="order.html" class="btn" data-i18n="hero.btnBuy">Koupit</a>
+                <a href="#specs" class="link" data-i18n="hero.btnLearn">Zjistit více ></a>
             </div>
         </div>
     </header>
@@ -48,9 +55,11 @@
     <main>
         <section class="feature-section">
             <div class="container">
-                <h2 class="text-gradient fade-in-up scroll-trigger">Vidia G-Force 9000.</h2>
-                <h3 class="fade-in-up scroll-trigger">Výkon z jiné galaxie.</h3>
-                <p class="intro fade-in-up scroll-trigger">První čip na světě s neurální sítí 5. generace. Zvládne
+                <h2 class="text-gradient fade-in-up scroll-trigger" data-i18n="features.chip.title">Vidia G-Force 9000.
+                </h2>
+                <h3 class="fade-in-up scroll-trigger" data-i18n="features.chip.subtitle">Výkon z jiné galaxie.</h3>
+                <p class="intro fade-in-up scroll-trigger" data-i18n="features.chip.desc">První čip na světě s neurální
+                    sítí 5. generace. Zvládne
                     renderovat realitu rychleji, než ji vidíte.</p>
             </div>
         </section>
@@ -65,9 +74,11 @@
         <section id="ai" class="ai-section">
             <canvas id="neural-canvas"></canvas>
             <div class="container content-overlay">
-                <h2 class="text-gradient fade-in-up scroll-trigger">Ondra Intelligence.</h2>
-                <h3 class="fade-in-up scroll-trigger">Myslí dřív než vy.</h3>
-                <p class="intro fade-in-up scroll-trigger">Neurální engine s 50 biliony operací za sekundu. Předvídá
+                <h2 class="text-gradient fade-in-up scroll-trigger" data-i18n="features.ai.title">Ondra Intelligence.
+                </h2>
+                <h3 class="fade-in-up scroll-trigger" data-i18n="features.ai.subtitle">Myslí dřív než vy.</h3>
+                <p class="intro fade-in-up scroll-trigger" data-i18n="features.ai.desc">Neurální engine s 50 biliony
+                    operací za sekundu. Předvídá
                     vaše potřeby, optimalizuje výkon a chrání vaše soukromí.</p>
             </div>
         </section>
@@ -83,19 +94,22 @@
                 <div class="eco-line line-3"></div>
             </div>
             <div class="container content-overlay">
-                <h2 class="fade-in-up scroll-trigger">Jeden dotyk. Vše propojeno.</h2>
-                <p class="intro fade-in-up scroll-trigger">OndraMac, OndraPad, OndraWatch. V dokonalé harmonii.</p>
+                <h2 class="fade-in-up scroll-trigger" data-i18n="features.ecosystem.title">Jeden dotyk. Vše propojeno.
+                </h2>
+                <p class="intro fade-in-up scroll-trigger" data-i18n="features.ecosystem.desc">OndraMac, OndraPad,
+                    OndraWatch. V dokonalé harmonii.</p>
             </div>
         </section>
 
         <section id="specs" class="bento-section container">
-            <h2 class="section-title text-center scroll-trigger fade-in-up text-shine">Specifikace, které mění hru.</h2>
+            <h2 class="section-title text-center scroll-trigger fade-in-up text-shine" data-i18n="specs.title">
+                Specifikace, které mění hru.</h2>
             <div class="bento-grid">
                 <div class="bento-item large scroll-trigger fade-in-up"
                     style="background-image: url('chip_real.png'); background-size: cover; background-position: center;">
                     <div class="bento-content">
-                        <h3>Vidia G-Force 9000</h3>
-                        <p>Nejvýkonnější čip v historii mobilů.</p>
+                        <h3 data-i18n="specs.chip.title">Vidia G-Force 9000</h3>
+                        <p data-i18n="specs.chip.desc">Nejvýkonnější čip v historii mobilů.</p>
                     </div>
                 </div>
                 <div class="bento-item scroll-trigger fade-in-up"
@@ -109,21 +123,21 @@
                         </div>
                     </div>
                     <div class="bento-content">
-                        <h3>Jaderná baterie</h3>
-                        <p>Výdrž 50 let na jedno nabití.</p>
+                        <h3 data-i18n="specs.battery.title">Jaderná baterie</h3>
+                        <p data-i18n="specs.battery.desc">Výdrž 50 let na jedno nabití.</p>
                     </div>
                 </div>
                 <div class="bento-item fade-in-up scroll-trigger delay-2"
                     style="background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('os_real.png') center/cover no-repeat;">
                     <div class="bento-content">
-                        <h3>OndraOS 1.0.</h3>
-                        <p>Rozhraní zítřka.</p>
+                        <h3 data-i18n="specs.os.title">OndraOS 1.0.</h3>
+                        <p data-i18n="specs.os.desc">Rozhraní zítřka.</p>
                     </div>
                 </div>
                 <div class="bento-item wide fade-in-up scroll-trigger vibranium-card">
                     <div class="metal-texture"></div>
                     <div class="bento-content">
-                        <h3>Vibranium.</h3>
+                        <h2 data-i18n="features.titanium.title">Titan. Nezničitelný.</h2>
                         <p>Nezničitelná elegance.</p>
                     </div>
                 </div>
@@ -148,24 +162,6 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4>Objevovat</h4>
-                    <ul>
-                        <li><a href="mac.html">OndraMac</a></li>
-                        <li><a href="ipad.html">OndraPad</a></li>
-                        <li><a href="index.html">Ondrův Mobil</a></li>
-                        <li><a href="watch.html">OndraWatch</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Účet</h4>
-                    <ul>
-                        <li><a href="services.html">Spravovat Ondra ID</a></li>
-                        <li><a href="services.html">Účet Ondra Store</a></li>
-                        <li><a href="services.html">OndraCloud.com</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Pro firmy</h4>
                     <ul>
                         <li><a href="business.html">Ondra a byznys</a></li>
                         <li><a href="business.html">Nakupování pro korporace</a></li>
